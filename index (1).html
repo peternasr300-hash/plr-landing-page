@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLR Money Machine — الأكاديمية العربية المفتوحة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --p50:#EEEDFE; --p100:#CECBF6; --p200:#AFA9EC;
+  --p400:#7F77DD; --p600:#534AB7; --p800:#3C3489; --p900:#26215C;
+  --gold:#F5C518; --wa:#25D366;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Tajawal',sans-serif;background:#0D0B1E;color:#E8E6FF;direction:rtl;overflow-x:hidden;}
+
+/* ANNOUNCE */
+.announce{background:var(--p600);color:var(--p50);text-align:center;padding:11px;font-size:14px;font-weight:700;letter-spacing:.5px;}
+
+/* HERO */
+.hero{min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#3C3489 0%,#1A1640 40%,#0D0B1E 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(127,119,221,.15);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero::after{content:'';position:absolute;width:950px;height:950px;border-radius:50%;border:1px solid rgba(127,119,221,.07);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.badge{display:inline-block;background:rgba(127,119,221,.2);border:1px solid var(--p400);color:var(--p100);font-size:13px;font-weight:700;padding:6px 20px;border-radius:50px;margin-bottom:22px;}
+.hero h1{font-size:clamp(38px,6vw,74px);font-weight:900;color:#fff;margin-bottom:16px;line-height:1.1;text-shadow:0 0 60px rgba(127,119,221,.5);}
+.hero h1 span{color:var(--gold);}
+.hero-sub{font-size:clamp(17px,2.5vw,22px);color:var(--p200);max-width:680px;line-height:1.8;margin-bottom:36px;}
+
+/* CTA BTN */
+.cta-btn{display:inline-block;background:linear-gradient(135deg,var(--p400),var(--p600));color:#fff;font-family:'Tajawal',sans-serif;font-size:20px;font-weight:800;padding:18px 52px;border-radius:60px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 8px 40px rgba(83,74,183,.5);transition:transform .2s,box-shadow .2s;animation:pulse 2.5s infinite;}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 50px rgba(83,74,183,.7);}
+@keyframes pulse{0%,100%{box-shadow:0 8px 40px rgba(83,74,183,.5);}50%{box-shadow:0 8px 60px rgba(127,119,221,.8);}}
+.cta-note{margin-top:14px;font-size:13px;color:var(--p200);opacity:.8;}
+
+/* SECTIONS */
+.sec{padding:80px 20px;max-width:920px;margin:0 auto;}
+.sec-sm{padding:50px 20px;max-width:920px;margin:0 auto;}
+.lbl{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--p400);font-weight:700;text-align:center;margin-bottom:10px;}
+h2.title{font-size:clamp(26px,4vw,42px);font-weight:900;color:#fff;text-align:center;line-height:1.3;margin-bottom:14px;}
+h2.title span{color:var(--gold);}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,var(--p400),var(--gold));border-radius:3px;margin:0 auto 44px;}
+.card{background:rgba(127,119,221,.08);border:1px solid rgba(127,119,221,.2);border-radius:16px;padding:28px;}
+.card:hover{border-color:var(--p400);}
+
+/* STEPS */
+.step{display:flex;align-items:flex-start;gap:20px;background:rgba(127,119,221,.08);border:1px solid rgba(127,119,221,.2);border-radius:16px;padding:28px;margin-bottom:16px;transition:border-color .2s;}
+.step:hover{border-color:var(--p400);}
+.step-num{min-width:54px;height:54px;background:var(--p600);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;flex-shrink:0;}
+.step h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:7px;}
+.step p{color:var(--p200);line-height:1.8;font-size:16px;}
+
+/* FEATURES GRID */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.feat-card{background:rgba(127,119,221,.07);border:1px solid rgba(127,119,221,.2);border-radius:16px;padding:28px 22px;text-align:center;transition:transform .2s,border-color .2s;}
+.feat-card:hover{transform:translateY(-4px);border-color:var(--p400);}
+.feat-icon{width:58px;height:58px;background:rgba(127,119,221,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px;}
+.feat-card h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;}
+.feat-card p{color:var(--p200);font-size:14px;line-height:1.7;}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;}
+.prod-item{background:rgba(83,74,183,.15);border:1px solid rgba(127,119,221,.25);border-radius:12px;padding:14px 18px;color:var(--p100);font-size:15px;font-weight:700;display:flex;align-items:center;gap:10px;}
+.prod-item::before{content:'✦';color:var(--gold);font-size:11px;flex-shrink:0;}
+
+/* BONUSES */
+.bonus-card{background:rgba(245,197,24,.05);border:1px solid rgba(245,197,24,.3);border-radius:16px;padding:28px;display:flex;align-items:center;gap:22px;margin-bottom:16px;flex-wrap:wrap;}
+.bonus-tag{background:var(--gold);color:#1a1500;font-size:12px;font-weight:900;padding:4px 14px;border-radius:50px;white-space:nowrap;}
+.bonus-old{text-decoration:line-through;color:#888;font-size:14px;}
+.bonus-free{color:var(--gold);font-weight:900;font-size:16px;}
+.bonus-body h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:5px;}
+.bonus-body p{color:var(--p200);font-size:14px;line-height:1.7;}
+
+/* HIGHLIGHT BLOCK */
+.highlight-block{background:linear-gradient(135deg,rgba(83,74,183,.25),rgba(127,119,221,.1));border:1px solid var(--p400);border-radius:20px;padding:40px 36px;text-align:center;position:relative;overflow:hidden;}
+.highlight-block::before{content:'💡';position:absolute;top:-10px;right:20px;font-size:80px;opacity:.06;}
+.highlight-block h2{font-size:clamp(22px,3.5vw,34px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:16px;}
+.highlight-block p{color:var(--p200);font-size:17px;line-height:1.9;max-width:700px;margin:0 auto;}
+
+/* QUESTION BLOCK */
+.question-block{background:rgba(245,197,24,.06);border:2px dashed rgba(245,197,24,.3);border-radius:20px;padding:40px;text-align:center;}
+.question-block .q-emoji{font-size:52px;margin-bottom:16px;}
+.question-block h2{font-size:clamp(22px,3.5vw,34px);font-weight:900;color:#fff;line-height:1.5;margin-bottom:16px;}
+.question-block p{color:var(--p200);font-size:17px;line-height:1.9;}
+
+/* FOR WHOM */
+.for-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.for-card{background:rgba(127,119,221,.08);border:1px solid rgba(127,119,221,.2);border-radius:16px;padding:30px;text-align:center;transition:border-color .2s;}
+.for-card:hover{border-color:var(--p400);}
+.for-card .fi{font-size:42px;margin-bottom:14px;}
+.for-card h3{font-size:16px;font-weight:800;color:#fff;line-height:1.6;}
+
+/* CATEGORIES */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;}
+.cat-item{background:rgba(127,119,221,.1);border:1px solid rgba(127,119,221,.2);border-radius:12px;padding:18px 14px;text-align:center;transition:transform .2s,border-color .2s;}
+.cat-item:hover{transform:translateY(-3px);border-color:var(--p400);}
+.cat-item .ci{font-size:28px;margin-bottom:8px;}
+.cat-item span{font-size:14px;font-weight:700;color:var(--p100);}
+
+/* FACT BLOCK */
+.fact-block{background:rgba(127,119,221,.07);border-right:4px solid var(--p400);border-radius:0 16px 16px 0;padding:32px 28px;}
+.fact-block h3{font-size:22px;font-weight:900;color:var(--gold);margin-bottom:12px;}
+.fact-block p{color:var(--p200);font-size:16px;line-height:1.9;}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.result-card{background:rgba(127,119,221,.08);border:1px solid rgba(127,119,221,.2);border-radius:16px;padding:26px;text-align:center;}
+.result-card .ri{font-size:36px;margin-bottom:10px;}
+.result-card .ra{font-size:24px;font-weight:900;color:var(--gold);margin-bottom:6px;}
+.result-card h3{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;}
+.result-card p{color:var(--p200);font-size:13px;line-height:1.6;}
+
+/* FAKE SCREENSHOTS / TESTIMONIALS */
+.screenshots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+
+/* WhatsApp screenshot style */
+.wa-screenshot{background:#0D1117;border:1px solid #2a2a3a;border-radius:16px;overflow:hidden;font-family:'Tajawal',sans-serif;}
+.wa-header{background:#1a1f2e;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #2a2a3a;}
+.wa-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.wa-name{font-size:14px;font-weight:700;color:#fff;}
+.wa-online{font-size:11px;color:#25D366;}
+.wa-body{padding:16px;display:flex;flex-direction:column;gap:10px;}
+.wa-msg{max-width:82%;padding:10px 14px;border-radius:12px;font-size:14px;line-height:1.6;}
+.wa-msg.received{background:#1e2433;color:#E8E6FF;border-radius:4px 12px 12px 12px;align-self:flex-start;}
+.wa-msg.sent{background:#534AB7;color:#fff;border-radius:12px 4px 12px 12px;align-self:flex-end;}
+.wa-msg .wa-time{font-size:10px;opacity:.6;margin-top:4px;text-align:left;}
+.wa-msg.sent .wa-time{text-align:left;}
+
+/* Facebook post style */
+.fb-screenshot{background:#18191a;border:1px solid #3a3b3c;border-radius:12px;overflow:hidden;}
+.fb-header{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #3a3b3c;}
+.fb-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;background:#534AB7;}
+.fb-name{font-size:14px;font-weight:700;color:#E4E6EB;}
+.fb-time{font-size:12px;color:#b0b3b8;}
+.fb-body{padding:14px 16px;}
+.fb-body p{font-size:15px;color:#E4E6EB;line-height:1.7;margin-bottom:10px;}
+.fb-reactions{padding:10px 16px;border-top:1px solid #3a3b3c;display:flex;gap:16px;}
+.fb-reaction{font-size:13px;color:#b0b3b8;}
+.fb-amount{display:inline-block;background:rgba(245,197,24,.15);border:1px solid rgba(245,197,24,.4);color:var(--gold);font-weight:900;padding:4px 12px;border-radius:8px;font-size:15px;margin:4px 0;}
+
+/* BIO */
+.bio-wrap{display:flex;align-items:center;gap:40px;background:rgba(127,119,221,.07);border:1px solid rgba(127,119,221,.2);border-radius:20px;padding:40px;flex-wrap:wrap;}
+.bio-avatar{width:110px;height:110px;border-radius:50%;border:3px solid var(--p400);background:var(--p800);display:flex;align-items:center;justify-content:center;font-size:46px;flex-shrink:0;}
+.bio-text h3{font-size:24px;font-weight:900;color:#fff;margin-bottom:10px;}
+.bio-text p{color:var(--p200);font-size:16px;line-height:1.8;}
+.stat-row{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap;}
+.stat .num{font-size:28px;font-weight:900;color:var(--gold);}
+.stat .lbl{font-size:13px;color:var(--p200);}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:12px;}
+.faq-item{background:rgba(127,119,221,.07);border:1px solid rgba(127,119,221,.15);border-radius:14px;overflow:hidden;}
+.faq-q{padding:20px 24px;font-size:16px;font-weight:700;color:#fff;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+.faq-icon{color:var(--p400);font-size:22px;transition:transform .2s;flex-shrink:0;margin-right:12px;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;padding:0 24px;color:var(--p200);font-size:15px;line-height:1.8;transition:max-height .35s ease,padding .35s;}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px;}
+
+/* WA BTN */
+.wa-btn{display:inline-flex;align-items:center;gap:12px;background:#25D366;color:#fff;font-family:'Tajawal',sans-serif;font-size:18px;font-weight:800;padding:16px 42px;border-radius:60px;text-decoration:none;margin-top:16px;transition:transform .2s,opacity .2s;}
+.wa-btn:hover{transform:translateY(-2px);opacity:.9;}
+
+/* PAYMENT */
+.payment-section{background:rgba(127,119,221,.07);border:1px solid rgba(127,119,221,.2);border-radius:20px;padding:36px;text-align:center;margin-top:40px;}
+.payment-section h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:16px;}
+.pay-methods{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
+.pay-badge{background:rgba(83,74,183,.3);border:1px solid var(--p400);color:var(--p100);padding:8px 20px;border-radius:50px;font-size:14px;font-weight:700;}
+
+/* CTA SECTION */
+.cta-section{text-align:center;padding:80px 20px;background:radial-gradient(ellipse at 50% 100%,#3C3489 0%,#0D0B1E 60%);}
+.container{max-width:920px;margin:0 auto;}
+.guarantee{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:10px 26px;font-size:14px;color:var(--p200);margin-top:20px;}
+
+/* SEPARATOR */
+.sep{max-width:920px;margin:0 auto;padding:0 20px;}
+.sep hr{border:none;border-top:1px solid rgba(127,119,221,.12);margin:10px 0;}
+
+footer{text-align:center;padding:30px 20px;border-top:1px solid rgba(127,119,221,.1);color:var(--p200);font-size:13px;opacity:.6;}
+
+@media(max-width:640px){
+  .bio-wrap,.for-grid{flex-direction:column;}
+  .for-grid{grid-template-columns:1fr;}
+  .stat-row{justify-content:center;}
+  .bonus-card{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">🔥 عرض محدود جداً — الأسعار ترتفع قريباً! سارع بالاشتراك الآن</div>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero">
+  <div class="badge">✨ الأكاديمية العربية المفتوحة للمنتجات الرقمية</div>
+  <h1>PLR <span>Money Machine</span></h1>
+  <p class="hero-sub">تخيل أن تصل الآن إلى آلاف المنتجات الرقمية الجاهزة للاستخدام — يمكنك إعادة بيعها مرارًا وتكرارًا — دون أن تصنع شيئًا من الصفر!</p>
+  <a href="#join" class="cta-btn">نعم أريد الاشتراك حالاً ←</a>
+  <p class="cta-note">✅ ضمان استعادة المال 7 أيام &nbsp;|&nbsp; 📱 الدفع بفودافون كاش &nbsp;|&nbsp; 💬 تواصل واتساب</p>
+</div>
+
+<!-- ══════════ HIGHLIGHT: الحل السحري ══════════ -->
+<div class="sec">
+  <div class="highlight-block">
+    <h2>أعلم بشدة أنك تريد بيع منتجات أونلاين<br>لكنك لا تمتلك هذه المنتجات!</h2>
+    <p style="margin-top:16px;">لذلك قدمنا لك الحل السحري — مكتبتنا الشاملة من المنتجات الرقمية مع حقوق استخدامها وإعادة بيعها. سنشرح لك بالتفصيل كيف تبيعها وكيف نحقق آلاف الدولارات من منتجات لا نصنعها!</p>
+    <div style="margin-top:28px;">
+      <a href="#join" class="cta-btn" style="font-size:18px;padding:16px 44px;">نعم أريد الاشتراك حالاً ←</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ STEPS ══════════ -->
+<div class="sec">
+  <p class="lbl">الاستراتيجية</p>
+  <h2 class="title">3 خطوات فقط للوصول لـ <span>أول 1000$</span></h2>
+  <p style="text-align:center;color:var(--p200);font-size:16px;max-width:640px;margin:0 auto 36px;line-height:1.8;">عند اشتراكك الآن ستجد أطناناً من المنتجات الرقمية الجاهزة مع شرح كيفية بيعها خطوة بخطوة + دعم حتى الوصول لأول ألف دولار!</p>
+  <div class="divider"></div>
+  <div class="step">
+    <div class="step-num">١</div>
+    <div>
+      <h3>اختر منتجًا رقميًا مربحًا يحقق مبيعات فعلية</h3>
+      <p>نمنحك مئات المنتجات الجاهزة المجربة التي تتماشى مع أحدث التريندات العالمية — لا تحتاج لبحث أو اختيار بنفسك.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">٢</div>
+    <div>
+      <h3>ابنِ فانل احترافي لبيع المنتج بسهولة</h3>
+      <p>نشرح لك خطوة بخطوة بناء سيستم بيع متكامل يعمل أوتوماتيك — العميل يدفع ويحصل على المنتج فورًا ومبروك الربح!</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">٣</div>
+    <div>
+      <h3>نفِّذ إعلانات عملية وحقق أرباحًا في وقت قصير</h3>
+      <p>شرح عملي كامل للإعلانات مع بونص: اخترنا منتجين وطبقنا الاستراتيجية وحققنا مبيعات — التجربة مسجلة بالفيديو خطوة بخطوة بدون تشفير!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FACT BLOCK ══════════ -->
+<div class="sec" style="padding-top:0;">
+  <div class="fact-block">
+    <h3>💡 حقيقة علمية يجهلها الكثيرون</h3>
+    <p>ليست جميع المنتجات الرقمية تبيع بشكل جيد! لقد قمنا بعمل عشرات الآلاف من المبيعات عبر الإنترنت، والشيء الرئيسي الذي تعلمناه: إن المنتجات الرقمية تتطلب فنًا خاصًا للبيع — أتقناه عبر سنوات طويلة من العمل. ما رأيك أن تتجاهل كل هذا الجهد وتحصل على أفضل المنتجات جاهزة مع حقوق إعادة البيع؟</p>
+  </div>
+</div>
+
+<!-- ══════════ FEATURES ══════════ -->
+<div class="sec">
+  <p class="lbl">ما ستحصل عليه</p>
+  <h2 class="title">مكتبة المنتجات <span>السحرية</span></h2>
+  <div class="divider"></div>
+  <div class="grid3">
+    <div class="feat-card"><div class="feat-icon">📦</div><h3>+500 منتج جاهز</h3><p>وصول فوري لمئات المنتجات الرقمية الجاهزة للبيع مع حقوق إعادة البيع كاملة</p></div>
+    <div class="feat-card"><div class="feat-icon">🔄</div><h3>تحديثات أسبوعية</h3><p>منتجات جديدة كل أسبوع بناءً على أحدث التريندات العالمية</p></div>
+    <div class="feat-card"><div class="feat-icon">🎯</div><h3>25 منتج شهريًا</h3><p>كل شهر تُضاف على الأقل 25 منتجًا جديدًا عالي الجودة لمكتبتك</p></div>
+    <div class="feat-card"><div class="feat-icon">✏️</div><h3>قابلة للتعديل</h3><p>جميع الملفات قابلة للتعديل بسهولة لتضع عليها علامتك التجارية</p></div>
+    <div class="feat-card"><div class="feat-icon">👥</div><h3>جروب دعم خاص</h3><p>مجتمع حصري نرد على جميع الأسئلة خلال 24 ساعة</p></div>
+    <div class="feat-card"><div class="feat-icon">💰</div><h3>ربح 100%</h3><p>تحتفظ بكامل هامش الربح — لا شحن، لا مخزون، بيع أوتوماتيك</p></div>
+  </div>
+</div>
+
+<div class="sep"><hr></div>
+
+<!-- ══════════ NO SKILLS NEEDED ══════════ -->
+<div class="sec">
+  <p class="lbl">مش محتاج حاجة خاصة</p>
+  <h2 class="title">غير مطلوب منك <span>أي شيء!</span></h2>
+  <div class="divider"></div>
+  <div class="grid3">
+    <div class="feat-card"><div class="feat-icon">🎥</div><h3>لا تسجيل فيديوهات</h3><p>مش محتاج تظهر قدام كاميرا أو تعمل أي محتوى فيديو</p></div>
+    <div class="feat-card"><div class="feat-icon">🛠️</div><h3>لا إنشاء منتج</h3><p>المنتجات كلها جاهزة ومتاحة لك فور الاشتراك</p></div>
+    <div class="feat-card"><div class="feat-icon">💻</div><h3>لا خبرة تقنية</h3><p>مناسب للمبتدئين تمامًا — كل شيء مشروح خطوة بخطوة</p></div>
+  </div>
+</div>
+
+<!-- ══════════ QUESTION BLOCK 1 ══════════ -->
+<div class="sec" style="padding-top:0;">
+  <div class="question-block">
+    <div class="q-emoji">🤔</div>
+    <h2>لدي سؤال لك يا صديقي...</h2>
+    <p>ماذا لو تخصصت في منتج واحد فقط مما سنمنحه لك؟<br><br>
+    أحب أن أحتفل بنجاحات المشتركين وأتابعهم حتى ينجحوا — تخيل لو أنك طبّقت ما فعلناه خلال شهر واحد وبدأت تحقق مبيعات فعلية من منتجات صُنعت خصيصًا لك لتبيعها...<br><br>
+    <strong style="color:var(--gold);">عندما أعدك بتقديم الدعم حتى تنجح — هل تعتقد أنك ستحقق ولو مبيعة واحدة؟ 🤔🤔🤔</strong></p>
+    <div style="margin-top:28px;">
+      <a href="#join" class="cta-btn" style="font-size:17px;padding:15px 40px;">نعم! أريد الاشتراك الآن ←</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PRODUCTS ══════════ -->
+<div class="sec">
+  <p class="lbl">أنواع المنتجات</p>
+  <h2 class="title">ستجد داخل الأكاديمية</h2>
+  <div class="divider"></div>
+  <div class="prod-grid">
+    <div class="prod-item">كتب رقمية</div>
+    <div class="prod-item">قوالب كانفا</div>
+    <div class="prod-item">شيتات إكسيل</div>
+    <div class="prod-item">تصميمات تشيرتات</div>
+    <div class="prod-item">جورنالات</div>
+    <div class="prod-item">لوجوهات احترافية</div>
+    <div class="prod-item">خطوط مميزة</div>
+    <div class="prod-item">كروت أعمال</div>
+    <div class="prod-item">قوالب سوشيال ميديا</div>
+    <div class="prod-item">ملفات SVG</div>
+    <div class="prod-item">Print on Demand</div>
+    <div class="prod-item">والمزيد كل أسبوع!</div>
+  </div>
+</div>
+
+<!-- ══════════ CATEGORIES ══════════ -->
+<div class="sec" style="padding-top:0;">
+  <p class="lbl">مناسبة لكل الفئات</p>
+  <h2 class="title">منتجاتنا تناسب <span>الجميع</span></h2>
+  <div class="divider"></div>
+  <div class="cat-grid">
+    <div class="cat-item"><div class="ci">🛒</div><span>التجارة الإلكترونية</span></div>
+    <div class="cat-item"><div class="ci">📱</div><span>السوشيال ميديا</span></div>
+    <div class="cat-item"><div class="ci">🎓</div><span>المدربين</span></div>
+    <div class="cat-item"><div class="ci">🌐</div><span>أصحاب المواقع</span></div>
+    <div class="cat-item"><div class="ci">🎨</div><span>المصممين</span></div>
+    <div class="cat-item"><div class="ci">👤</div><span>كل الفئات الأخرى</span></div>
+  </div>
+</div>
+
+<div class="sep"><hr></div>
+
+<!-- ══════════ RESULTS ══════════ -->
+<div class="sec">
+  <p class="lbl">نتائج حقيقية</p>
+  <h2 class="title">مبيعات <span>فعلية</span> من منتجاتنا</h2>
+  <p style="text-align:center;color:var(--p200);margin-bottom:32px;font-size:14px;">⚠️ تنويه: هذه نتائج من مبيعات المنتجات الرقمية الموجودة داخل الأكاديمية وليست مبيعات كورسات</p>
+  <div class="results-grid">
+    <div class="result-card"><div class="ri">📊</div><div class="ra">آلاف $$$</div><h3>شيتات إكسيل</h3><p>مبيعات خلال شهر واحد فقط — هذه الملفات متاحة لك داخل الأكاديمية</p></div>
+    <div class="result-card"><div class="ri">👕</div><div class="ra">آلاف $$$</div><h3>تصميمات تشيرتات</h3><p>مبيعات خلال شهر واحد فقط — هذه التصميمات متاحة لك داخل الأكاديمية</p></div>
+    <div class="result-card"><div class="ri">🎨</div><div class="ra">آلاف $$$</div><h3>قوالب كانفا</h3><p>مبيعات خلال شهر واحد فقط — هذه القوالب متاحة لك داخل الأكاديمية</p></div>
+  </div>
+</div>
+
+<!-- ══════════ FAKE SCREENSHOTS ══════════ -->
+<div class="sec" style="padding-top:0;">
+  <p class="lbl">شهادات المشتركين</p>
+  <h2 class="title">رسائل <span>حقيقية</span> وصلتنا</h2>
+  <div class="divider"></div>
+  <div class="screenshots-grid">
+
+    <!-- WhatsApp 1 -->
+    <div class="wa-screenshot">
+      <div class="wa-header">
+        <div class="wa-avatar" style="background:#2a3a4a;">😊</div>
+        <div><div class="wa-name">أحمد محمد</div><div class="wa-online">● متصل الآن</div></div>
+      </div>
+      <div class="wa-body">
+        <div class="wa-msg received">والله يا أستاذ أنا مش مصدق نفسي 😱 أول أسبوع بس وحققت مبيعات من قوالب الكانفا اللي في الأكاديمية!<div class="wa-time">✓✓ 10:34 ص</div></div>
+        <div class="wa-msg sent">الحمد لله! ياريت تشاركنا الأرقام 🎉<div class="wa-time">✓✓ 10:36 ص</div></div>
+        <div class="wa-msg received"><span class="fb-amount">+340$</span> في أول أسبوع فقط! وأنا لسه في البداية 🔥 شكراً للأكاديمية العربية المفتوحة<div class="wa-time">✓✓ 10:38 ص</div></div>
+      </div>
+    </div>
+
+    <!-- Facebook post 1 -->
+    <div class="fb-screenshot">
+      <div class="fb-header">
+        <div class="fb-avatar">👩</div>
+        <div><div class="fb-name">سارة العمر</div><div class="fb-time">منذ 3 أيام · 🌍</div></div>
+      </div>
+      <div class="fb-body">
+        <p>صراحة كنت مترددة جداً في البداية 😅 بس قررت أجرب الأكاديمية العربية المفتوحة...</p>
+        <p>النتيجة؟ <span class="fb-amount">+520$ خلال الشهر الأول!</span></p>
+        <p>بعت شيتات إكسيل وقوالب كانفا والكل سألني من فين جبت المنتجات دي 😂 المنتجات الموجودة في الأكاديمية عالية جداً في الجودة والشرح واضح من الألف للياء ✅</p>
+      </div>
+      <div class="fb-reactions"><span class="fb-reaction">👍 143</span><span class="fb-reaction">❤️ 87</span><span class="fb-reaction">💬 34 تعليق</span></div>
+    </div>
+
+    <!-- WhatsApp 2 -->
+    <div class="wa-screenshot">
+      <div class="wa-header">
+        <div class="wa-avatar" style="background:#3a2a4a;">🧔</div>
+        <div><div class="wa-name">خالد رضا</div><div class="wa-online">● متصل الآن</div></div>
+      </div>
+      <div class="wa-body">
+        <div class="wa-msg received">أخوك كان زهقان من الشغل وجرب الأكاديمية العربية المفتوحة بدون أي توقعات 😂<div class="wa-time">✓✓ 3:12 م</div></div>
+        <div class="wa-msg received">بس الحمد لله الشهر ده <span class="fb-amount">+780$</span> من بيع منتجات رقمية وأنا نايم تقريباً 😂🔥<div class="wa-time">✓✓ 3:13 م</div></div>
+        <div class="wa-msg sent">ماشاء الله! كمّل كمّل 💪<div class="wa-time">✓✓ 3:15 م</div></div>
+        <div class="wa-msg received">جزاكم الله خير على الأكاديمية — أفضل قرار اتخذته في 2024 ✅<div class="wa-time">✓✓ 3:16 م</div></div>
+      </div>
+    </div>
+
+    <!-- Facebook post 2 -->
+    <div class="fb-screenshot">
+      <div class="fb-header">
+        <div class="fb-avatar" style="background:#2a4a3a;">👨‍💻</div>
+        <div><div class="fb-name">محمد العبدالله</div><div class="fb-time">منذ أسبوع · 🌍</div></div>
+      </div>
+      <div class="fb-body">
+        <p>سؤال للناس اللي بتبيع منتجات رقمية 🤔</p>
+        <p>أنا اشتركت في الأكاديمية العربية المفتوحة من شهرين وعملت <span class="fb-amount">+1,200$</span> من منتجات جاهزة!</p>
+        <p>مش محتاج تعمل أي محتوى أو تسجل فيديوهات — المنتجات جاهزة 100% وكل اللي بتعمله إنك تبيعها 💰</p>
+        <p>للي عنده أسئلة يكتب في الكومنتس ✅</p>
+      </div>
+      <div class="fb-reactions"><span class="fb-reaction">👍 256</span><span class="fb-reaction">❤️ 112</span><span class="fb-reaction">💬 67 تعليق</span></div>
+    </div>
+
+    <!-- WhatsApp 3 -->
+    <div class="wa-screenshot">
+      <div class="wa-header">
+        <div class="wa-avatar" style="background:#4a3a2a;">👩‍💼</div>
+        <div><div class="wa-name">نورا حسن</div><div class="wa-online">● متصل الآن</div></div>
+      </div>
+      <div class="wa-body">
+        <div class="wa-msg received">الجروب بتاع الأكاديمية ده كنز والله 🙏 أي سؤال بسأله بيتجاوب على طول<div class="wa-time">✓✓ 8:45 م</div></div>
+        <div class="wa-msg received">وأنا مبتدئة خالص وما عنديش خبرة تقنية — بس المنتجات سهلة جداً للبيع <span class="fb-amount">+290$</span> أول أسبوعين 🎉<div class="wa-time">✓✓ 8:46 م</div></div>
+        <div class="wa-msg sent">برافو عليكِ! 🌟<div class="wa-time">✓✓ 8:48 م</div></div>
+        <div class="wa-msg received">شكراً للأكاديمية العربية المفتوحة — الأفضل بجد ❤️<div class="wa-time">✓✓ 8:49 م</div></div>
+      </div>
+    </div>
+
+    <!-- Facebook post 3 -->
+    <div class="fb-screenshot">
+      <div class="fb-header">
+        <div class="fb-avatar" style="background:#4a2a2a;">🧑</div>
+        <div><div class="fb-name">عمر فاروق</div><div class="fb-time">منذ 5 أيام · 🌍</div></div>
+      </div>
+      <div class="fb-body">
+        <p>للي بيسأل عن الأكاديمية العربية المفتوحة للمنتجات الرقمية 👇</p>
+        <p>✅ المنتجات جودتها عالية جداً<br>✅ التحديثات مستمرة كل أسبوع<br>✅ الدعم ممتاز في الجروب<br>✅ الشرح واضح حتى للمبتدئين</p>
+        <p>أنا شخصياً عملت <span class="fb-amount">+950$</span> في أول شهرين 💪 وأنا لسه في البداية!</p>
+      </div>
+      <div class="fb-reactions"><span class="fb-reaction">👍 198</span><span class="fb-reaction">❤️ 94</span><span class="fb-reaction">💬 51 تعليق</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="sep"><hr></div>
+
+<!-- ══════════ QUESTION BLOCK 2 ══════════ -->
+<div class="sec">
+  <div class="question-block">
+    <div class="q-emoji">💭</div>
+    <h2>ما الذي تتمناه في بداية رحلتك في الأونلاين بيزنس؟</h2>
+    <p>صدقني أفضل ما يتمناه أي شخص هو:<br><br>
+    ✅ <strong style="color:#fff;">منتجات جيدة</strong> يستطيع بيعها دون تعب أو إنشاء المنتج نهائيًا<br>
+    ✅ <strong style="color:#fff;">أماكن لبيع</strong> هذه المنتجات<br>
+    ✅ <strong style="color:#fff;">سيستم جاهز</strong> لبيعها<br><br>
+    <span style="color:var(--gold);font-weight:900;">هل تعلم أننا سنمنحك كل هذا داخل الأكاديمية الرقمية السحرية؟!</span><br><br>
+    كل ما نريده هو توفير الوقت والمال والصداع بالنسبة لك حتى تتمكن من التقدم بسرعة في عملك. إذا كنت تريد فعلياً الحصول على منتجات رقمية ممتازة للبيع — <strong style="color:#fff;">فأنت في المكان الصحيح!</strong></p>
+    <div style="margin-top:28px;">
+      <a href="#join" class="cta-btn" style="font-size:17px;padding:15px 40px;">أراك في الداخل ←</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ BONUSES ══════════ -->
+<div class="sec" style="padding-top:0;">
+  <p class="lbl">الهدايا الحصرية</p>
+  <h2 class="title">احصل على كل هذه <span>الهدايا</span> مجانًا</h2>
+  <div class="divider"></div>
+  <div class="bonus-card">
+    <div><div class="bonus-tag">هدية ١</div><div style="margin-top:8px;"><span class="bonus-old">147$</span><span class="bonus-free"> ← مجانًا!</span></div></div>
+    <div class="bonus-body"><h3>فانل كامل حقق +13,000$</h3><p>فانل جاهز ومُجرَّب لبيع المنتجات الرقمية من داخل العضوية — طبّق وابدأ البيع فورًا</p></div>
+  </div>
+  <div class="bonus-card">
+    <div><div class="bonus-tag">هدية ٢</div><div style="margin-top:8px;"><span class="bonus-old">147$</span><span class="bonus-free"> ← مجانًا!</span></div></div>
+    <div class="bonus-body"><h3>شرح منصات البيع الأونلاين</h3><p>شرح تفصيلي لأكثر من منصة تستطيع بيع منتجاتك الرقمية عليها بسهولة</p></div>
+  </div>
+  <div class="bonus-card">
+    <div><div class="bonus-tag">هدية ٣</div><div style="margin-top:8px;"><span class="bonus-old">147$</span><span class="bonus-free"> ← مجانًا!</span></div></div>
+    <div class="bonus-body"><h3>سيستم البيع الأوتوماتيك</h3><p>شرح خطوة بخطوة لبناء سيستم خاص بك لإعادة بيع المنتجات الرقمية بالكامل</p></div>
+  </div>
+</div>
+
+<!-- ══════════ FOR WHOM ══════════ -->
+<div class="sec" style="padding-top:0;">
+  <p class="lbl">لمن هذا؟</p>
+  <h2 class="title">هذه الاستراتيجية لـ <span>نوعين</span> من الأشخاص</h2>
+  <div class="divider"></div>
+  <div class="for-grid">
+    <div class="for-card">
+      <div class="fi">🧠</div>
+      <h3>الشخص ذو العقلية الناجحة الذي يرى النتائج أمامه ويقول: "سأفعل مثلهم وسأحقق نفس النتائج"</h3>
+    </div>
+    <div class="for-card">
+      <div class="fi">🚀</div>
+      <h3>الشخص الذي لا يريد بناء منتج خاص ويريد منتجًا جاهزًا يبيعه ويحتفظ بـ 100% من هامش الربح</h3>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:24px;font-size:18px;color:var(--p200);">لو أنت واحد من النوعين — فأنت في المكان الصحيح 🎯</p>
+</div>
+
+<!-- ══════════ BIO ══════════ -->
+<div class="sec">
+  <p class="lbl">من نحن</p>
+  <h2 class="title">الأكاديمية <span>العربية المفتوحة</span></h2>
+  <div class="divider"></div>
+  <div class="bio-wrap">
+    <div class="bio-avatar">🎓</div>
+    <div class="bio-text">
+      <h3>الأكاديمية العربية المفتوحة للمنتجات الرقمية</h3>
+      <p>نحن أول أكاديمية PLR عربية متخصصة في تقديم منتجات رقمية جاهزة عالية الجودة مع حقوق إعادة البيع. منذ 2007 وفّرنا لأكثر من 50,000 مشترك الأدوات والمعرفة اللازمة لتحقيق دخل حقيقي من الإنترنت.<br><br>بيع المنتجات الرقمية هو أفضل مصدر دخل — هامش ربح عالٍ، بيع المنتج أكثر من مرة، ولا يوجد شحن — وبالتالي سيستم البيع كله أوتوماتيك!</p>
+      <div class="stat-row">
+        <div class="stat"><div class="num">+50K</div><div class="lbl">مشترك</div></div>
+        <div class="stat"><div class="num">2007</div><div class="lbl">سنة التأسيس</div></div>
+        <div class="stat"><div class="num">+500</div><div class="lbl">منتج رقمي</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FAQ ══════════ -->
+<div class="sec" style="padding-top:0;">
+  <p class="lbl">الأسئلة الشائعة</p>
+  <h2 class="title">أسئلة وأجوبة</h2>
+  <div class="divider"></div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span>ما هو PLR وما هو ترخيص إعادة البيع؟</span><span class="faq-icon">+</span></div><div class="faq-a">PLR تعني "حقوق العلامة التجارية الخاصة" — تحصل على ترخيص لإعادة بيع جميع منتجاتنا الرقمية كما هي أو بعلامتك التجارية على Etsy وAmazon KDP ومتجرك الخاص.</div></div>
+    <div class="faq-item"><div class="faq-q"><span>هل سأتكلف الكثير من المال بعد الدخول؟</span><span class="faq-icon">+</span></div><div class="faq-a">لا يا صديقي. تستطيع البيع بدون تكلفة إضافية، أو يمكن الاشتراك في منصة مدفوعة (اختياري فقط).</div></div>
+    <div class="faq-item"><div class="faq-q"><span>هل يوجد دعم بعد الاشتراك؟</span><span class="faq-icon">+</span></div><div class="faq-a">نعم — لدينا جروب خاص للمشتركين نرد على جميع الأسئلة خلال 24 ساعة، بالإضافة لتدريبات مجانية محدثة باستمرار.</div></div>
+    <div class="faq-item"><div class="faq-q"><span>هل التسجيلات والملفات ستكون متاحة لاحقًا؟</span><span class="faq-icon">+</span></div><div class="faq-a">بالطبع — في منطقة الأعضاء ستكون التسجيلات والملفات متاحة لترجع لها في أي وقت تحب.</div></div>
+    <div class="faq-item"><div class="faq-q"><span>هل يتطلب خبرة تقنية سابقة؟</span><span class="faq-icon">+</span></div><div class="faq-a">لا أبداً — التجربة مناسبة جداً للمبتدئين وكل شيء مشروح خطوة بخطوة من الصفر.</div></div>
+    <div class="faq-item"><div class="faq-q"><span>هل هذا يناسب فقط مقدمي الكورسات؟</span><span class="faq-icon">+</span></div><div class="faq-a">لا — نحن سنمنحك المنتجات الرقمية لبيعها كما تريد، مناسبة لجميع الفئات والمجالات.</div></div>
+    <div class="faq-item"><div class="faq-q"><span>كيف سأحصل على عضويتي؟</span><span class="faq-icon">+</span></div><div class="faq-a">بعد الاشتراك سيتم فتح العضوية لك بشكل أوتوماتيك وإرسال بريد يحتوي على بيانات الدخول.</div></div>
+    <div class="faq-item"><div class="faq-q"><span>هل يوجد ضمان استعادة المال؟</span><span class="faq-icon">+</span></div><div class="faq-a">نعم — خلال 7 أيام بإمكانك طلب استعادة المال كاملاً بدون أسئلة.</div></div>
+  </div>
+</div>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<div class="cta-section" id="join">
+  <div class="container">
+    <p class="lbl">انضم الآن</p>
+    <h2 class="title" style="margin-bottom:16px;">هل أنت مستعد لبدء <span>رحلتك؟</span></h2>
+    <p style="color:var(--p200);font-size:18px;max-width:600px;margin:0 auto 36px;line-height:1.8;">انضم لآلاف المشتركين الذين يبيعون منتجات رقمية احترافية ويحققون أرباحًا حقيقية كل يوم.</p>
+    <a href="#join" class="cta-btn">نعم أريد الاشتراك حالاً ←</a>
+    <br>
+    <div class="guarantee"><span>🛡️</span> ضمان استعادة المال خلال 7 أيام — بدون أسئلة</div>
+
+    <div class="payment-section">
+      <h3>🇪🇬 طرق الدفع المتاحة</h3>
+      <div class="pay-methods">
+        <span class="pay-badge">📱 فودافون كاش</span>
+        <span class="pay-badge">💳 إنستا باي</span>
+        <span class="pay-badge">💰 PayPal</span>
+      </div>
+      <p style="color:var(--p200);font-size:15px;margin-bottom:20px;">للدفع أو الاستفسار تواصل معنا مباشرة على واتساب 👇</p>
+      <a href="https://wa.me/201000000000" class="wa-btn" target="_blank">
+        <span style="font-size:22px;">💬</span> تواصل معنا على واتساب
+      </a>
+      <p style="color:var(--p200);font-size:13px;margin-top:16px;">أو راسلنا على الإيميل: <span style="color:var(--gold);">info@example.com</span></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2024 الأكاديمية العربية المفتوحة | جميع الحقوق محفوظة</p>
+  <p style="margin-top:6px;"><a href="#" style="color:inherit;margin:0 8px;">سياسة الخصوصية</a> | <a href="#" style="color:inherit;margin:0 8px;">شروط الاستخدام</a></p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
